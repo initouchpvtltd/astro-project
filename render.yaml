@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: astro-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      # Free account from geonames.org, with web services enabled in the
+      # account settings. Set the value in the Render dashboard.
+      - key: GEONAMES_USERNAME
+        sync: false
+      # Rate limits. Set to 0 to disable an individual limit.
+      - key: RATE_LIMIT_CITIES_PER_MINUTE
+        value: "20"
+      - key: RATE_LIMIT_CHART_PER_MINUTE
+        value: "60"
+      # Ceiling across all callers, protecting the GeoNames daily allowance.
+      - key: GEONAMES_MAX_PER_HOUR
+        value: "500"

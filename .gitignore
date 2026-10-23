@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+.env
+
+# Client reference material kept locally, not deployed
+docs/*.mp4
+docs/*.zip
+docs/Zet 9 Geo/
+docs/orbfile/
+docs/Astrology-API-Specification.docx
+docs/Astrology-API-Specification.md
+docs/Astrology-API-Specification.pdf
+
+# Ephemeris copies the fallback may drop in the working directory.
+# Only root level -- ephe/*.se1 stays tracked.
+/*.se1
